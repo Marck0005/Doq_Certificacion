@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+
+    <record id="view_helpdesk_time_ticket_form" model="ir.ui.view">
+        <field name="name">view.helpdesk_time_ticket.form</field>
+        <field name="model">helpdesk.time.ticket</field>
+        <field name="inherit_id" ref="helpdesk_mgmt.ticket_view_form" />
+        <field name="arch" type="xml">
+
+            <xpath expr="//page[@name='other_info']" position="after">
+                <!-- Add your fields here -->
+                <page string="Portion of hours" name="portion_hours" attrs="{ 'invisible': [('time_report', '=', False)] }">
+                    <group>
+                        <field name="total_time" widget="timesheet_uom"/>
+                        <field name="time_report" invisible = "1"/>
+                        <field name="time_analytic_lines_ids">
+                            <tree editable='bottom'>
+                                <field name="imputation_date" />
+                                <field name="unit_amount" widget="timesheet_uom"/>
+                                <field name="imputation_type_id"/>
+                                <field name="employee_id"/>
+                                <field name="company_id" invisible = "1"/>
+                                <field name="account_id"/>
+                                <field name="description"/>
+                                <field name="timesheet_cost"/>
+                            </tree>
+                        </field>
+                    </group>
+                </page>
+
+            </xpath>
+
+
+        </field>
+    </record>
+
+    <record id="view_helpdesk_time_ticket_tree" model="ir.ui.view">
+        <field name="name">view.helpdesk_time_ticket.tree</field>
+        <field name="model">helpdesk.time.ticket</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="team_id"/>
+                <field name="user_id"/>
+                <field name="total_time" widget="timesheet_uom"/>
+                <field name="time_report"/>
+                <field name="time_analytic_lines_ids"/>
+            </tree>
+        </field>
+    </record>
+
+
+
+
+
+
+</odoo>

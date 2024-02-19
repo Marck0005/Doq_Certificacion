@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+
+    <record id="helpdesk_time_analytic_lines_action" model="ir.actions.act_window">
+        <field name="name">Imputations</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">helpdesk.time.analytic.lines</field>
+        <field name="view_mode">tree,graph,pivot</field>
+        <field name="view_id" ref="view_helpdesk_time_analytic_lines_tree"/>
+        <field name="domain">[('team_id', '=', active_id)]</field>
+
+
+    </record>
+
+
+
+
+
+    <!-- Form view for "helpdesk_time_ticket_team" -->
+    <record id="view_helpdesk_time_ticket_team_form" model="ir.ui.view">
+        <field name="name">view.helpdesk_time_ticket_team.form</field>
+        <field name="model">helpdesk.time.ticket.team</field>
+        <field name="inherit_id" ref="helpdesk_mgmt.view_helpdesk_team_form" />
+        <field name="arch" type="xml">
+
+            <xpath expr="//sheet" position="before">
+                <header>
+                    <button name="launch_wizard_team_report" type="object" string="Create PDF" />
+                </header>
+            </xpath>
+
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button class="oe_stat_button" type="action" name="%(helpdesk_time_analytic_lines_action)d" icon="fa-clock">
+                    <field string="Team total time" name="team_total_time" widget="statinfo" />
+                </button>
+            </xpath>
+
+
+            <xpath expr="//field[@name='show_in_portal']" position="after">
+                <field name="time_report" string="Use timesheets?"/>
+            </xpath>
+
+
+        </field>
+    </record>
+
+
+    <record id="view_helpdesk_time_ticket_team_tree" model="ir.ui.view">
+        <field name="name">view.helpdesk_time_ticket_team.tree</field>
+        <field name="model">helpdesk.time.ticket.team</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="team_total_time"/>
+                <field name="ticket_ids"/>
+                <field name="user_ids"/>
+            </tree>
+        </field>
+    </record>
+
+
+
+
+
+
+</odoo>

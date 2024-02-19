@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+
+    <!-- ACTIONS -->
+    <record id="helpdesk_time_ticket_tickets_action" model="ir.actions.act_window">
+        <field name="name">Tickets</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">helpdesk.time.ticket</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_helpdesk_time_ticket_tree"/>
+        <field name="context">{'form_view_ref': 'time_tickets.view_helpdesk_time_ticket_form'}</field>
+    </record>
+
+
+    <record id="helpdesk_time_ticket_teams_action" model="ir.actions.act_window">
+        <field name="name">Teams</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">helpdesk.time.ticket.team</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_helpdesk_time_ticket_team_tree"/>
+        <field name="context">{'form_view_ref': 'time_tickets.view_helpdesk_time_ticket_team_form'}</field>
+    </record>
+
+
+
+
+
+
+    <!-- MENUS -->
+    <menuitem id="helpdesk_time_ticket_main_menu_point" name="Helpdesk-Time" web_icon="time_tickets,static/edit.png" sequence="0"/>
+
+    <menuitem id="helpdesk_time_ticket_tickets" name="Tickets" parent="helpdesk_time_ticket_main_menu_point" action="helpdesk_time_ticket_tickets_action" sequence="1"/>
+    <menuitem id="helpdesk_time_ticket_teams" name="Teams" parent="helpdesk_time_ticket_main_menu_point" action="helpdesk_time_ticket_teams_action" sequence="2"/>
+
+
+
+</odoo>

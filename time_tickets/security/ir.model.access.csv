@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_helpdesk_time_ticket,access_helpdesk_time_ticket,model_helpdesk_time_ticket,base.group_user,1,1,1,1
+access_helpdesk_time_team,access_helpdesk_time_team,model_helpdesk_time_ticket_team,base.group_user,1,1,1,1
+access_helpdesk_time_analytic_lines,access_helpdesk_time_analytic_lines,model_helpdesk_time_analytic_lines,base.group_user,1,1,1,1
+access_helpdesk_time_imputation_type,access_helpdesk_time_imputation_type,model_helpdesk_time_imputation_type,base.group_user,1,1,1,1
+access_wizard_team_report,access_wizard_team_report,model_wizard_team_report,base.group_user,1,1,1,1
