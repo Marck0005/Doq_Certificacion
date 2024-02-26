@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="sale_order_cancel_inherit_view_form" model="ir.ui.view">
+        <field name="name">view.cancel.sale.order.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <!-- Add your xpath here -->
+
+            <xpath expr="//button[@name='action_cancel']" position="attributes">
+
+                <attribute name="name">launch_cancel_sale_wizard</attribute>
+            </xpath>
+
+            <xpath expr="//div[@name='button_box']" position="after">
+                <field name="cancel_type" attrs="{'invisible': True}"/>
+
+                <widget name="web_ribbon" title="Dismissed" bg_color="bg-danger" attrs="{'invisible':[('cancel_type', '!=', 'dismissed')]} "/>
+                <widget name="web_ribbon" title="Lost" bg_color="bg-danger" attrs="{'invisible':[('cancel_type', '!=', 'lost')]} "/>
+                <widget name="web_ribbon" title="Won" bg_color="bg-success" attrs="{'invisible':['|',('cancel_type', '!=', 'won'),('state', '!=','sale')]} "/>
+
+            </xpath>
+        </field>
+    </record>
+
+
+    <record id="sale_order_cancel_inherit_view_tree" model="ir.ui.view">
+        <field name="name">view.cancel.sale.order.tree</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_quotation_tree"/>
+        <field name="arch" type="xml">
+            <!-- Add your xpath here -->
+
+            <xpath expr="//field[@name='amount_total']" position="after">
+
+                <field name="cancel_type" decoration-success="cancel_type == 'won'" decoration-danger="cancel_type in ('lost', 'dismissed')" widget="badge" />
+            </xpath>
+
+
+        </field>
+    </record>
+
+
+    <record id="set_cancel_type_action" model="ir.actions.server">
+        <field name="name">Set cancel type</field>
+        <field name="model_id" ref="sale.model_sale_order"/>
+        <field name="binding_model_id" ref="sale.model_sale_order"/>
+        <field name="binding_view_types">form,list</field>
+        <field name="state">code</field>
+        <field name="code">records.set_cancel_type()</field>
+    </record>
+</odoo>

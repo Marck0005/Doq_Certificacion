@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+
+    <!-- wizard_team_report form view -->
+    <record id="wizard_cancel_sale_view_form" model="ir.ui.view">
+        <field name="name">wizard_cancel_sale.view.form</field>
+        <field name="model">wizard.cancel.sale</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+                        <!-- Add your fields here -->
+                        <field name="cancel_type"/>
+                        <field name="cancel_type_dismiss_id" attrs="{ 'invisible': [('cancel_type', '!=', 'dismissed')], 'required': [('cancel_type', '=', 'dismissed')]  }" />
+                        <field name="cancel_type_lost_id" attrs="{ 'invisible': [('cancel_type', '!=', 'lost')] ,  'required': [('cancel_type', '=', 'lost')] }" />
+                        <field name="cancel_description" />
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="cancel_sale" string="Confirm" type="object" class="btn-primary"/>
+                    <button string="Exit" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+
+
+
+
+
+
+</odoo>

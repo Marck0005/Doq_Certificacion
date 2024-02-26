@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_wizard_cancel_sale,access_wizard_cancel_sale,model_wizard_cancel_sale,base.group_user,1,1,1,1
+access_sale_order,access_sale_order,model_sale_order,base.group_user,1,1,1,1
+access_cancel_type_dismiss,access_cancel_type_dismiss,model_cancel_type_dismiss,base.group_user,1,1,1,1
+access_cancel_type_lost,access_cancel_type_lost,model_cancel_type_lost,base.group_user,1,1,1,1
